@@ -39,37 +39,40 @@
           addFun('Up');
         } else if (keyC === 40) {
           addFun('Down');
+        } else if (keyC === 82) { // R key takes you back to home position
+            myBlock.style.top = '100px'; 
+            myBlock.style.left ='100px';
         } else if (keyC === 67) {
           myBlock.style.backgroundColor = randomColor();
         } else if (keyC === 13 || keyC === 32) {
-            mover();
+          mover();
         }
 
         console.log(e.keyCode);
-      })
+      });
 
       function mover() {
-          if (funList.length > 0) {
-              let cur = myBlock.getBoundingClientRect();
-              let el = funList.shift();
-              let item = el.textContent.replace('+', '');
-              myFunctionList.removeChild(el);
-              myBlock.innerHTML = 'Move:' + item;
-              if (item == 'Left') {
-                  myBlock.style.left = cur.left - cur.width + 'px'
-              }
-              if (item == 'Right') {
-                  myBlock.style.left = cur.left + cur.width + 'px'
-              }
-              if (item == 'Up[') {
-                  myBlock.style.top = cur.top - cur.width + 'px'
-              }
-              if (item == 'Down') {
-                  myBlock.style.top = cur.top + cur.width + 'px'
-              }
-              setTimeout(mover,300);
-              return;
+        if (funList.length > 0) {
+          let cur = myBlock.getBoundingClientRect();
+          let el = funList.shift();
+          let item = el.textContent.replace('+', '');
+          myFunctionList.removeChild(el);
+          myBlock.innerHTML = 'Move:' + item;
+          if (item == 'Left') {
+            myBlock.style.left = cur.left - cur.width + 'px';
           }
+          if (item == 'Right') {
+            myBlock.style.left = cur.left + cur.width + 'px';
+          }
+          if (item == 'Up[') {
+            myBlock.style.top = cur.top - cur.width + 'px';
+          }
+          if (item == 'Down') {
+            myBlock.style.top = cur.top + cur.width + 'px';
+          }
+          setTimeout(mover, 300);
+          return;
+        }
       }
 
       function addFun(val) {
@@ -85,17 +88,16 @@
         span.addEventListener('mouseout', function() {
           this.style.backgroundColor = 'white';
           this.style.color = 'black';
-        })
+        });
 
         span.addEventListener('click', function() {
-            let curIndex = funList.indexOf(this);
-            let tempRemove = funList.splice(curIndex, 1);
-            myFunctionList.removeChild(this);
-        })
+          let curIndex = funList.indexOf(this);
+          let tempRemove = funList.splice(curIndex, 1);
+          myFunctionList.removeChild(this);
+        });
 
         myFunctionList.appendChild(span);
         funList.push(span);
-
       }
 
       function randomColor() {
@@ -107,29 +109,29 @@
         );
       }
 
-    //   function goLeft() {
-    //     let temp = myBlock.offsetLeft;
-    //     temp = temp - 50;
-    //     myBlock.style.left = temp + 'px';
-    //   }
+      //   function goLeft() {
+      //     let temp = myBlock.offsetLeft;
+      //     temp = temp - 50;
+      //     myBlock.style.left = temp + 'px';
+      //   }
 
-    //   function goRight() {
-    //     let temp = myBlock.offsetLeft;
-    //     temp = temp + 50;
-    //     myBlock.style.left = temp + 'px';
-    //   }
+      //   function goRight() {
+      //     let temp = myBlock.offsetLeft;
+      //     temp = temp + 50;
+      //     myBlock.style.left = temp + 'px';
+      //   }
 
-    //   function goUp() {
-    //     let temp = myBlock.offsetTop;
-    //     temp = temp - 50;
-    //     myBlock.style.top = temp + 'px';
-    //   }
+      //   function goUp() {
+      //     let temp = myBlock.offsetTop;
+      //     temp = temp - 50;
+      //     myBlock.style.top = temp + 'px';
+      //   }
 
-    //   function goDown() {
-    //     let temp = myBlock.offsetTop;
-    //     temp = temp + 50;
-    //     myBlock.style.top = temp + 'px';
-    //   }
+      //   function goDown() {
+      //     let temp = myBlock.offsetTop;
+      //     temp = temp + 50;
+      //     myBlock.style.top = temp + 'px';
+      //   }
     </script>
   </head>
   <body>
